@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       ">
+    <context:component-scan base-package="cn.erpsystem.controller"/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=utf-8</value>
+                    </list>
+                </property>
+            </bean>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=utf-8</value>
+                        <value>application/json;charset=utf-8</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <value>WriteDateUseDateFormat</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorParameter" value="true"/>
+        <property name="parameterName" value="format"/>
+        <property name="ignoreAcceptHeader" value="false"/>
+        <property name="mediaTypes">
+            <value>
+                json=application/json
+                xml=application/xml
+                html=text/html
+            </value>
+        </property>
+        <property name="defaultContentType" value="text/html"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="prefix" value="/WEB-INF/jsp/"/>
+                    <property name="suffix" value=".jsp"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <!--引入静态文件-->
+    <mvc:resources mapping="/statics/**" location="/statics/"/>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxInMemorySize" value="5000000"/>
+    </bean>
+
+    <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="cn.erpsystem.tools.StringToDateConverter">
+                    <constructor-arg>
+                        <value>yyyy-MM-dd</value>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!--配置全局异常-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.RuntimeException">error</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/**"/>
+            <bean class="cn.erpsystem.tools.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

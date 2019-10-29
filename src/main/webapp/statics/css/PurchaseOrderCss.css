@@ -1,0 +1,160 @@
+#inserttable,#updatetable{
+	width: 500px;
+	padding:20px 30px;
+	background-color: rgba(255,255,255,0.9);
+	color: black;
+	position: fixed;
+	top: 100px;
+	left: 300px;
+	display: none;
+	border-radius:10px ;
+}
+#selectable,#sorttable{
+	width: 600px;
+	color: black;
+	height: 120px;
+	background-color: #CCCCCC;
+	position: fixed;
+	top: 20px;
+	left: 400px;
+	border-radius:10px ;
+	display: none;
+}
+#selectinfo{
+	margin-left: 20px;
+}
+#sorttable{
+	width: 500px;
+}
+#img1{
+	position: fixed;
+	top: 57px;
+	margin-left: 20px;
+	cursor: pointer;
+}
+#imgul>li{
+	margin-top: 10px;
+	padding-top: 20px;
+	display: inline-block;
+	width: 100px;
+	height: 70px;
+	text-align: center;
+	background-color: rgb(255,255,255);
+	border-radius:10px ;
+}
+body a{
+	text-decoration: none;
+	color: black;
+}
+body li{
+	list-style: none;
+}
+/*添加*/
+#get,#reset,#upget,#upreset{
+	width: 140px;
+	height: 30px;
+	color: white;
+	background-color: #5DBCF0;
+	cursor: pointer;
+	border-radius:10px ;
+	border: none; 
+	outline: none;
+	margin-left: 50px;
+	margin-top: 10px;
+	font-size: 20px;
+}
+#get:hover,#reset:hover{
+	background-color: #5599FF;
+}
+/*退出*/
+#ex{
+	width: 100px;
+	height: 30px;
+	color: white;
+	background-color: #a1a4a9;
+	cursor: pointer;
+	border-radius:10px ;
+}
+/**/
+#pid,#plname{
+	color: white;
+	border: none; 
+	outline: none;
+	background-color: #5DBCF0;
+	width: 120px; 
+	height: 30px;
+	border-radius:10px ;
+}
+#reset1{	
+	width: 80px;
+	height: 25px;
+	color: white;
+	border: none; 
+	outline: none;
+	background-color: #5DBCF0;
+	border-radius:10px ;
+	margin-left: 470px;
+}
+#pid{
+	margin-left: 165px;
+	font-size: 18px;
+}
+#plname{
+	margin-left: 70px;
+	font-size: 18px;
+}
+#pid:hover,#plname:hover,#reset1:hover{
+	background-color: #5599FF;
+	
+}
+#idorder{
+	margin-left: 20px;
+}
+#reset2{
+	margin-left: 340px;
+	margin-top: 65px;
+	color: white;
+	width: 80px;
+	height: 25px;
+	border: none; 
+	outline: none;
+	background-color: #5DBCF0;
+	border-radius:10px ;
+	cursor: pointer;
+}
+#sum,#idorder{
+	width: 125px;
+	height: 30px;
+	border-radius: 10px;
+	border: none; 
+	outline: none;
+	background-color: #5DBCF0;
+	color: white;
+	cursor: pointer;
+	position: fixed;
+}
+#idorder{
+	margin-left: 150px;
+}
+#sum:hover,#idorder:hover,#reset2:hover{
+	background-color: #5599FF;
+}
+#porderid,#porder,#pname,#pnum,#textarea{
+	font-weight: bolder; 
+}
+#tabledisplay{
+	background-color: rgba(255,255,255,0.9);
+	border-radius: 10px;
+	border-color:rgba(0,0,0,0.5);
+}
+/*奇数*/
+.odd{
+	background-color: #e6fad6;
+}
+/*偶数*/
+.enev{
+	background-color: #d6faf9;
+}
+.coloryello{
+	background-color:#d6d8fa;
+}

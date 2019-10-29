@@ -1,0 +1,61 @@
+/*清除边框*/
+*{
+	margin: 0;
+	padding: 0;
+}
+/*行内块元素*/
+div,a{
+	display: inline-block;
+	/*边框*/
+}
+#body_div3{
+	width:100%;
+	height:80%;
+	position: relative;
+	/*弹性容器*/
+	display:flex;
+	/*垂直对齐*/
+	align-items:center;
+	/*水平对齐*/
+	justify-content:center;
+}
+#body_div3 table{
+	position: absolute;
+	top: 60px;
+	margin: 5px 20px 5px 20px;
+}
+#body_div3 h2{
+	color:rgb(255,255,255);
+	position: absolute;
+	top: 2%;
+	left: 45%;
+}
+.body_div1 a{
+	margin:10px;
+	padding:20px;
+	font-size:25px;
+	color:black;
+	background-color: rgb(255,255,255);
+	border-radius:10px;
+}
+/*清除下划线*/
+a{
+	text-decoration: none;
+}
+#showtable{
+	left:0px;
+	line-height:40px;
+	background-color: rgba(255,255,255,0.8);
+	border-radius:10px;
+	border-color:rgba(0,0,0,0.8);
+}
+#showtable td{
+	padding-left: 10px;
+}
+.body_div2 a{
+	padding:10px;
+	border-radius:10px;
+	background-color: rgba(0,255,0,0.8);
+	color:black;
+	font-size: 20px;
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.erpsystem.dao.ProductionOrder.ProductionOrderMapper">
+    <!--查询全部-->
+    <select id="getshowPro" resultType="ProductionOrder">
+        SELECT * FROM `production_order`
+    </select>
+    <!--添加-->
+    <insert id="addProOrder">
+        INSERT INTO `production_order`
+        VALUES(NULL,#{p_porder},#{p_pname},#{porder},#{remarks})
+    </insert>
+    <!--按条件查询-->
+    <select id="getByProporderOrProname" resultType="ProductionOrder">
+        SELECT * FROM `production_order`
+        WHERE`p_porder`LIKE CONCAT('%',#{p_porder},'%')
+        AND `p_pname` LIKE CONCAT('%',#{p_pname},'%')
+    </select>
+    <!--删除数据-->
+    <delete id="deletePro">
+       DELETE FROM `production_order`
+        WHERE pid = #{pid}
+    </delete>
+    <!--修改前查询-->
+    <select id="selPro" resultType="ProductionOrder">
+        SELECT * FROM `production_order`
+        WHERE pid = #{pid}
+    </select>
+    <!--修改-->
+    <select id="updatePro">
+        UPDATE `production_order`
+        SET `p_pname` =#{p_pname},`porder`= #{porder},`remarks` =#{remarks}
+        WHERE pid = #{pid}
+    </select>
+</mapper>
